@@ -1,0 +1,51 @@
+{
+  "all": [],
+  "get": [
+    {
+      "path": "/comment",
+      "action": "getComments"
+    },
+    {
+      "path": "/comment/:id",
+      "action": "getComment"
+    },
+    {
+      "path": "/question",
+      "action": "getQuestions"
+    },
+    {
+      "path": "/question/:id",
+      "action": "getQuestion"
+    }
+  ],
+  "post": [
+    {
+      "path": "/comment",
+      "action": "createComment"
+    },
+    {
+      "path": "/question",
+      "action": "createQuestion"
+    }
+  ],
+  "put": [
+    {
+      "path": "/comment/:id",
+      "action": "editComment"
+    },
+    {
+      "path": "/question/:id",
+      "action": "editQuestion"
+    }
+  ],
+  "delete": [
+    {
+      "path": "/comment/:id",
+      "action": "removeComment"
+    },
+    {
+      "path": "/question/:id",
+      "action": "removeQuestion"
+    }
+  ]
+}

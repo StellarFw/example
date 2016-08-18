@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- define the correct charset -->
+    <meta charset="utf-8">
+
+    <!-- Application title -->
+    <title>Nomore</title>
+
+    <!-- Setting the right viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <!-- load materialize -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+
+    <!-- load Auth0 Lock script -->
+    <script src="//cdn.auth0.com/js/lock/10.0/lock.min.js"></script>
+
+    <!-- load Stellar client library -->
+    <script type="text/javascript" src="//0.0.0.0:8080/stellar-client"></script>
+  </head>
+
+  <body>
+    <!-- main app element -->
+    <app></app>
+
+    <!-- load application script -->
+    <script src="dist/build.js"></script>
+  </body>
+</html>

@@ -1,0 +1,6 @@
+temp/
+.idea/
+node_modules/
+public/docs/
+public/stellar-client*
+package.json
