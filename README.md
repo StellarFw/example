@@ -2,6 +2,8 @@
 
 This is an example project to show the integration of a Single-Page-App (SPA) with an API developed using Stellar.
 
+![Screen](./screen.png)
+
 ## Pre-requirements
 
 - Stellar must be installed;
