@@ -64,8 +64,29 @@ export default {
       url: 'http://0.0.0.0:8080/'
     })
 
+    // handle the 'connected' event
+    self.stellar.on('connected', () => {
+      // log a message
+      console.log('Stellar is now connected with server')
+
+      // join the user to the defaultRoom
+      self.stellar.roomAdd('defaultRoom')
+    })
+
+    // handle the 'newQuestion' event
+    self.stellar.on('say', packet => {
+      // get only the message property
+      let message = packet.message
+
+      // handle the different events
+      if (message.newQuestion !== undefined) { // new questions
+        self.$broadcast('new-question', message.newQuestion)
+      } else if (message.delQuestion !== undefined) { // deleted question
+        self.$broadcast('del-question', message.delQuestion)
+      }
+    })
+
     // open connection with stellar server
-    self.stellar.on('connected', () => console.log('Stellar is now connected with server'))
     self.stellar.connect()
   },
 

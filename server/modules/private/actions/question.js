@@ -17,6 +17,9 @@ module.exports = [ {
                 return next(new Error('We can create that resource!'))
             }
 
+            // spreed the new question by all WebSocket users (we don't need wait for the callback)
+            api.chatRoom.broadcast({}, 'defaultRoom', { newQuestion: newModel })
+
             // append the new model on the response object
             action.response.question = newModel
 
@@ -67,8 +70,7 @@ module.exports = [ {
         api.models.get('question').findOneAndUpdate({_id: action.params.id}, action.params.question, {upsert: true}, (err, model) => {
             if (err) {
                 // return an error message to the client
-                next(new Error('We could not find the resource you were looking for'))
-                return
+                return next(new Error('We could not find the resource you were looking for'))
             }
 
             // put the updated model on the response object
@@ -91,9 +93,11 @@ module.exports = [ {
         api.models.get('question').findByIdAndRemove(action.params.id, err => {
             if (err) {
                   // return an error message to the client
-                  next(new Error('We could not remove the requested resource'))
-                  return
+                  return next(new Error('We could not remove the requested resource'))
               }
+
+              // broadcast the question deletion to all connected users (we don't need wait for the callback)
+              api.chatRoom.broadcast({}, 'defaultRoom', { delQuestion: action.params.id })
 
               // finish the action execution
               next()

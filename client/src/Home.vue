@@ -68,6 +68,21 @@ export default {
     self.fetchQuestions()
   },
 
+  events: {
+    'new-question'(newQuestion) {
+      let self = this
+
+      // append the new question to `self.questions` array
+      self.questions.unshift(newQuestion)
+    },
+    'del-question'(deletedId) {
+      let self = this
+      
+      // remove the deleted question from the `self.questions` array
+      self.questions = self.questions.filter(item => item.id !== deletedId)
+    }
+  },
+
   methods: {
     fetchQuestions() {
       let self = this
@@ -86,8 +101,7 @@ export default {
       
       // make the API request
       self.$root.stellar.action('createQuestion', data, response => {
-        // re-fetch all questions
-        self.fetchQuestions()
+        // todo: show a toast with a success message
       })
     },
 
