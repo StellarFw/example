@@ -10,7 +10,11 @@ exports.default = (api, mongoose) => {
     content: String,
     user: [Schema.Types.Mixed],
     comments: [{ type: Schema.Types.ObjectId, ref: 'comment' }]
-  }, { toObject: { virtuals: true }, toJSON: { virtuals: true }})
+  }, { 
+    timestamps: true,
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
+  })
 
   // add a dynamic fields
   questionS.virtual('excerpt').get(function () { 

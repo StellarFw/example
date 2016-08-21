@@ -5,9 +5,11 @@ exports.default = (api, mongoose) => {
   let Schema = mongoose.Schema
 
   // return the schema
-  return {
+  return new Schema({
     _creator: { type: Schema.Types.ObjectId, ref: 'question' },
     content: String,
     user: Schema.Types.Mixed
-  }
+  }, {
+    timestamps: true
+  })
 }
